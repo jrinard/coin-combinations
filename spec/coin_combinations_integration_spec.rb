@@ -11,7 +11,7 @@ describe('coin_combination path', {:type => :feature}) do
     fill_in('nickles', :with => '68')
     fill_in('user_input_init', :with => '68')
     click_button('Go')
-    expect(page).to have_content("2 quarters, 1 dimes, 1 nickle, 3 pennies")
+    expect(page).to have_content("2 quarters, 1 dime, 1 nickle, 3 pennies")
   end
 
   it('calculates the coin combinations for a given amount of change') do
@@ -21,6 +21,16 @@ describe('coin_combination path', {:type => :feature}) do
     fill_in('nickles', :with => '100')
     fill_in('user_input_init', :with => '85')
     click_button('Go')
-    expect(page).to have_content("2 quarters, 1 dimes, 5 nickle")
+    expect(page).to have_content("2 quarters, 1 dime, 5 nickle")
+  end
+
+  it('calculates the coin combinations for a given amount of change') do
+    visit('/')
+    fill_in('quarters', :with => '1')
+    fill_in('dimes', :with => '1')
+    fill_in('nickles', :with => '1')
+    fill_in('user_input_init', :with => '2')
+    click_button('Go')
+    expect(page).to have_content("2 pennies")
   end
 end
